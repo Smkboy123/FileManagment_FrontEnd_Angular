@@ -1,0 +1,10 @@
+/* *{
+    margin: 0;
+    padding: 0;
+
+} */
+.logCard{
+    margin: 100px;
+    padding: 50px;
+    background: skyblue;
+}
