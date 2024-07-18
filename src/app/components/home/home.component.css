@@ -4,6 +4,7 @@
 
 }
 
+
 .navbar {
     margin-bottom: 20px;
   }
@@ -15,6 +16,13 @@
   
   .navbar-nav .nav-item {
     margin-right: 20px;
+  }
+  .nav-link:hover{
+    border-bottom: solid red 2px;
+  }
+  .nav-link{
+    font-size: 1em;
+    font-weight: 450;
   }
   .welcoUsers{
     border: solid transparent 1px;

@@ -1,0 +1,29 @@
+
+<!-- service.component.html -->
+
+<div class="container mt-5">
+    <h2 class="text-center">Liste des Services</h2>
+    <div class="card">
+    <table class="table table-bordered text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">N°</th> 
+           <th scope="col">Nom du Service</th>
+           <th scope="col">Description</th> 
+           <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let service of services">
+          <td>{{service.idService}}</td>
+          <td>{{service.nomService}}</td>
+          <td>{{service.description}}</td>
+          <td>
+            <button class="btn btn-primary btn-sm">Modifier</button>
+            <i class="bi bi-box-arrow-in-right bi-lg"></i>
+            <button class="btn btn-danger btn-sm">Supprimer</button>
+          </td>
+   </tr>
+      </tbody>
+    </table>
+  </div>
