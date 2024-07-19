@@ -28,8 +28,8 @@
 
 // services.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from './service.service';
-import { Service } from 'src/app/models/service/service.model';
+import { ServiceService } from '../../services/service.service';
+import { Service } from 'src/app/models/service.model';
 
 @Component({
   selector: 'app-service',
