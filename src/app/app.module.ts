@@ -9,13 +9,19 @@ import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceComponent } from './components/service/service.component'
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { TicketComponent } from './components/ticket/ticket.component';
+import { TakeTicketComponent } from './components/take-ticket/take-ticket.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ServiceComponent
+    ServiceComponent,
+    NavbarComponent,
+    TicketComponent,
+    TakeTicketComponent
    
   ],
   imports: [
