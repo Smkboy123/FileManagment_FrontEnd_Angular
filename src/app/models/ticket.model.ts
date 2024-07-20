@@ -1,13 +1,16 @@
 export interface Ticket {
-     idTicket: number;
-     status: StatutTicket;
-     numeroTicket: string;
-     heurePrise: Date;
-     telephonne: string;
-}
-
+    idTicket: number;
+    status: string;
+    numeroTicket: string;
+    heurePrise: Date;
+    telephonne: string;
+    utilisateur: any;  
+    fileAttente: any;  
+    serviceModel: any;
+  }
+  
 enum StatutTicket {
-    EN_COURS,
-    TERMINE,
-    ANNULE
+    EN_COURS='Encours',
+    TERMINE='SERVI',
+    ANNULE='ANNULER'
 }

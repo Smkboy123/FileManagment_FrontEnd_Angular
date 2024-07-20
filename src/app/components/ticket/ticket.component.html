@@ -18,7 +18,7 @@
         <tr *ngFor="let ticket of tickets">
          <td>{{ticket.idTicket}}</td>
          <td>{{ticket.numeroTicket}}</td>
-         <td>{{ticket.heurePrise}}</td>
+         <td>{{ ticket.heurePrise ? (ticket.heurePrise | date:'dd-MM-yyyy  \'à\' HH:mm:ss') : 'hh-MM-YYYY' }}</td>
          <td>{{ticket.status}}</td>
           <td>
             <button class="btn btn-outline-success btn-sm mx-1">

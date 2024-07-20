@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { TakeTicketComponent } from './components/take-ticket/take-ticket.component';
+import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
+import { TicketDetailsComponent } from './components/ticket-details/ticket-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { TakeTicketComponent } from './components/take-ticket/take-ticket.compon
     ServiceComponent,
     NavbarComponent,
     TicketComponent,
-    TakeTicketComponent
+    TakeTicketComponent,
+    TicketFormComponent,
+    TicketDetailsComponent
    
   ],
   imports: [

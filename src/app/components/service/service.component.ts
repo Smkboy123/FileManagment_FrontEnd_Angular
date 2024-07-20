@@ -39,13 +39,40 @@ import { Service } from 'src/app/models/service.model';
 export class ServiceComponent implements OnInit {
   //service: Service = new Service();
   services: Service[] = [];
-
+  selectedService: Service | null = null;
   constructor(private serviceService: ServiceService) { }
 
   ngOnInit(): void {
-    this.serviceService.getServices().subscribe(data => {
-      this.services = data;
+    this.getServices();
+  }
+
+  getServices(): void {
+    this.serviceService.getServices().subscribe((services) => {
+      this.services = services;
+    });
+  }
+
+  editService(service: Service): void {
+    this.selectedService = { ...service };
+  }
+
+  updateService(): void {
+    if (this.selectedService) {
+      this.serviceService.updateService(this.selectedService.idService,this.selectedService).subscribe(() => {
+        this.getServices();
+        this.selectedService = null;
+      });
+    }
+  }
+
+  cancelEdit(): void {
+    this.selectedService = null;
+  }
+
+  deleteService(id: number): void {
+    if(confirm("ETES-VOUS SUR DE SUPPRIMER"))
+    this.serviceService.deleteService(id).subscribe(() => {
+      this.getServices();
     });
   }
 }
-

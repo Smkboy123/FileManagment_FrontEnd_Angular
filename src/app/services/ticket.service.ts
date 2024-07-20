@@ -1,18 +1,38 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ticket } from '../models/ticket.model';
+//import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
-  private apiUrl = 'http://localhost:8080/ticket/list';
 
-  constructor(private http: HttpClient ) { }
+  private apiServerUrl = 'http://localhost:8080';
 
-    getTickets(): Observable<Array<Ticket>>{
-      return this.http.get<Array<Ticket>>(this.apiUrl)
-    }
+  constructor(private http: HttpClient) { }
 
+  public creerTicket(idUser: number, idService: number, ticket: Ticket): Observable<Ticket> {
+    return this.http.post<Ticket>(`${this.apiServerUrl}/ticket/creer?idUser=${idUser}&idService=${idService}`, ticket);
+  }
+
+  public modifierTicket(idUtilisateur: number, idService: number, ticket: Ticket): Observable<Ticket> {
+    return this.http.put<Ticket>(`${this.apiServerUrl}/ticket/modifier?idUtilisateur=${idUtilisateur}&idService=${idService}`, ticket);
+  }
+
+  public annulerTicket(idTicket: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiServerUrl}/ticket/annuler/${idTicket}`);
+  }
+
+  public toutlesTickets(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.apiServerUrl}/ticket/list`);
+  }
+  public getTicketById(id: number): Observable<Ticket> {
+    return this.http.get<Ticket>(`${this.apiServerUrl}/ticket/${id}`);
+  }
+  
+  public getPosition(id: number): Observable<number> {
+    return this.http.get<number>(`${this.apiServerUrl}/ticket/position/${id}`);
+  }
 }

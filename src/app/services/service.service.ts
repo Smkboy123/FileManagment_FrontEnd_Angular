@@ -8,19 +8,19 @@ import { Service } from 'src/app/models/service.model';
   providedIn: 'root'
 })
 export class ServiceService {
-  private apiUrl = 'http://localhost:8080/service/list';
+  private apiUrl = 'http://localhost:8080/service';
 
   constructor(private http: HttpClient) { }
 
   getServices(): Observable<Service[]> {
-    return this.http.get<Service[]>(this.apiUrl);
+    return this.http.get<Service[]>(`${this.apiUrl}/list`);
   }
 
   updateService(id: number, service: Service): Observable<Service> {
-    return this.http.put<Service>(`${this.apiUrl}/${id}`, service);
+    return this.http.put<Service>(`${this.apiUrl}/modifier/${id}`, service);
   }
   deleteService(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
   addService(service: Service): Observable<Service> {
     return this.http.post<Service>(this.apiUrl, service);

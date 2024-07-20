@@ -19,9 +19,9 @@
           <td>{{service.nomService}}</td>
           <td>{{service.description}}</td>
           <td>
-            <button class="btn btn-outline-success btn-sm mx-1">
+            <button class="btn btn-outline-success btn-sm mx-1" (click)="editService(service)">
               <i class="bi bi-pencil-square" style="font-size: 1.2rem; width: 10px;"></i></button>
-            <button class="btn btn-outline-danger btn-sm mx-1">
+            <button class="btn btn-outline-danger btn-sm mx-1" (click)="deleteService(service.idService)" >
               <i class="bi bi-x-circle"style="font-size: 1.2rem; width: 10px;"></i>
             
             </button>
@@ -30,3 +30,40 @@
       </tbody>
     </table>
   </div>
+
+  <!-- Formulaire de modification -->
+  <div *ngIf="selectedService">
+    <h2 class="text-center mx-2">Modifier Service</h2>
+    <form (ngSubmit)="updateService()">
+      <div class="card m-1 p-2">
+      <div class="form-group">
+        <label for="nom" class="">Nom du Service</label>
+        <input type="text" class="form-control" id="nom" [(ngModel)]="selectedService.nomService" name="nom" required>
+      <div class="form-group mb-3">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" [(ngModel)]="selectedService.description" name="description" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+      <button type="button" class="btn btn-danger " (click)="cancelEdit()">Annuler</button>
+    </div>
+  </div>
+  </form>
+  </div>
+</div>
+ <!-- Formulaire d'ajout
+ <div *ngIf="selectedService">
+  <h2 class="text-center mt-5">Ajouter un Service</h2>
+  <form (ngSubmit)="addService()">
+    <div class="form-group">
+      <label for="nom">Nom du Service</label>
+      <input type="text" class="form-control" id="nom" [(ngModel)]="selectedService.nomService" name="nom" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" [(ngModel)]="selectedService.description" name="description" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+    <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Annuler</button>
+  </form>
+</div>
+</div> -->
