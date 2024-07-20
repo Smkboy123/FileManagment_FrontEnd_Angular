@@ -40,6 +40,9 @@ export class ServiceComponent implements OnInit {
   //service: Service = new Service();
   services: Service[] = [];
   selectedService: Service | null = null;
+  newService: Service = { idService: 0, nomService: '', description: '' };
+  addclic : boolean=false
+
   constructor(private serviceService: ServiceService) { }
 
   ngOnInit(): void {
@@ -75,4 +78,20 @@ export class ServiceComponent implements OnInit {
       this.getServices();
     });
   }
+  loadServices(): void {
+    this.serviceService.getServices().subscribe(data => {
+      this.services = data;
+    });
+  }
+  ifaddclic():void{
+    this.addclic=true
+  }
+  addService(): void {
+    this.serviceService.addService(this.newService).subscribe(() => {
+      this.loadServices();
+      this.newService = { idService: 0, nomService: '', description: '' };
+      this.addclic=false
+    });
+  }
+
 }
