@@ -1,0 +1,7 @@
+.bg-success {
+    background-color: #d4edda; /* couleur verte pour le statut SERVI */
+  }
+  
+  .bg-primary {
+    background-color: #cce5ff; /* couleur bleue pour le statut Encours */
+  }

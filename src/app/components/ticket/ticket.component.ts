@@ -9,17 +9,22 @@ import { TicketService } from 'src/app/services/ticket.service';
 })
 export class TicketComponent implements OnInit{
 
-  tickets: Ticket[]=[];
-
+  tickets: Ticket[]=[]
+  id!:number
+  ticket!: Ticket
 
   constructor(private ticketService: TicketService){
 
   }
 
   ngOnInit(): void {
-      this.ticketService.getTickets().subscribe(data=>{
+      this.ticketService.toutlesTickets().subscribe(data=>{
         this.tickets=data;
       });
-  };
 
+      this.ticketService.getPosition(this.ticket.idTicket).subscribe(data=>{
+        this.id=data;
+      })
+  };
+  
 }
