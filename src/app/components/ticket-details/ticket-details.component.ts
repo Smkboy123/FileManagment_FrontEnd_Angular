@@ -58,7 +58,7 @@ export class TicketDetailsComponent implements OnInit {
         this.services = data;
       },
       (error) => {
-        console.error('Error fetching services', error);
+        console.error('Erreur de chargement des services', error);
       }
     );
   }
@@ -93,5 +93,8 @@ export class TicketDetailsComponent implements OnInit {
         }
       );
     }
+  }
+  modifierTicket(): void {
+    this.router.navigate(['/modifier-ticket', this.ticket?.idTicket]);
   }
 }

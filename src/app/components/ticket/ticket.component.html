@@ -4,11 +4,11 @@
 <div class="container mt-5">
     <h2 class="text-center">Liste des Tickets</h2>
     <div class="card">
-    <table class="table table-bordered text-center">
+    <table class="table table-bordered table-striped text-center">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Position</th> 
-           <th scope="col">Numero</th>
+           <th scope="col">Position</th>
            <th scope="col">heure de Prise</th> 
            <th scope="col">Status</th>
            <th scope="col">Actions</th>
@@ -21,12 +21,8 @@
          <td>{{ ticket.heurePrise ? (ticket.heurePrise | date:'dd-MM-yyyy  \'à\' HH:mm:ss') : 'hh-MM-YYYY' }}</td>
          <td>{{ticket.status}}</td>
           <td>
-            <button class="btn btn-outline-success btn-sm mx-1">
-              <i class="bi bi-pencil-square" style="font-size: 1.2rem; width: 10px;"></i></button>
-            <button class="btn btn-outline-danger btn-sm mx-1" >
-              <i class="bi bi-x-circle"style="font-size: 1.2rem; width: 10px;"></i>
-              
-            </button>
+            <button class="btn btn-success btn-sm mx-1">
+              <i class="bi bi-toggle-on"></i></button>
           </td>
    </tr>
       </tbody>

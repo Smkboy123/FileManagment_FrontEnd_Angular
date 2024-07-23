@@ -1,0 +1,33 @@
+<!-- inscription.component.html -->
+<div class="container justify-content-center align-items-center my-5 ">
+    <div class="row justify-content-center ">
+      <div class="col-md-6">
+        <p style="text-align: center; font-size: 3em; font-weight: bold; color: red;">S'inscrire</p>
+        <div class="card mb-3">
+          <div class="card-body">
+            <form class="mx-5" (ngSubmit)="onSubmit()">
+              <div class="form-group mb-3">
+                <h1 style="text-align: center; margin: 10px;"><i class="bi bi-person-plus" style="font-size: 5rem;width: 100px;"></i></h1>
+                <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Nom d'utilisateur" required>
+              </div>
+              <div class="form-group mb-3">
+                <h1 style="text-align: center; margin: 10px;"></h1>
+                <input type="text" class="form-control" id="prenom" [(ngModel)]="prenom" name="prenom" placeholder="Prenom" required>
+              </div>
+              <div class="form-group mb-3">
+                <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+              </div>
+              <div class="form-group mb-3">
+                <input type="number" class="form-control" id="telephone" [(ngModel)]="telephone" name="telephonne" placeholder="Numero de telephone" required>
+              </div>
+              <div class="form-group mb-3">
+                <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" placeholder="Mot de passe" required>
+              </div>
+              <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
