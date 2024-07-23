@@ -14,6 +14,8 @@ import { TicketComponent } from './components/ticket/ticket.component';
 import { TakeTicketComponent } from './components/take-ticket/take-ticket.component';
 import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
 import { TicketDetailsComponent } from './components/ticket-details/ticket-details.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { TicketDetailsComponent } from './components/ticket-details/ticket-detai
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
