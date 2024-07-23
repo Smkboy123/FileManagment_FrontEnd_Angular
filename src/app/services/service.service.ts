@@ -8,8 +8,8 @@ import { Service } from 'src/app/models/service.model';
   providedIn: 'root'
 })
 export class ServiceService {
-  private apiUrl = 'http://localhost:8080/service';
-  private apiU = 'http://localhost:8080/service/creer';
+  private apiUrl = 'http://localhost:8080/api/v1/service';
+  private apiU = 'http://localhost:8080/api/v1/service/creer';
   constructor(private http: HttpClient) { }
 
   getServices(): Observable<Service[]> {

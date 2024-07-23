@@ -10,7 +10,7 @@ export class NavbarComponent implements OnInit{
 
 
 logoStyle: any ="navbar-brand mx-3 font-weight-bold ";
-  connect="login"
+  connect="connexion"
   deconnexion = "disconect"
   user: any;
   isConnect:boolean = false

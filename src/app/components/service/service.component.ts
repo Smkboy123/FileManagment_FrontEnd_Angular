@@ -30,6 +30,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { Service } from 'src/app/models/service.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-service',
@@ -43,7 +44,9 @@ export class ServiceComponent implements OnInit {
   newService: Service = { idService: 0, nomService: '', description: '' };
   addclic : boolean=false
 
-  constructor(private serviceService: ServiceService) { }
+  constructor(
+    private toastr: ToastrService,
+    private serviceService: ServiceService) { }
 
   ngOnInit(): void {
     this.getServices();
@@ -64,6 +67,8 @@ export class ServiceComponent implements OnInit {
       this.serviceService.updateService(this.selectedService.idService,this.selectedService).subscribe(() => {
         this.getServices();
         this.selectedService = null;
+        this.toastr.success('Service modifié','Succès' );
+
       });
     }
   }
@@ -91,6 +96,8 @@ export class ServiceComponent implements OnInit {
       this.loadServices();
       this.newService = { idService: 0, nomService: '', description: '' };
       this.addclic=false
+      this.toastr.success('Service ajouté','Succès' );
+
     });
   }
 
