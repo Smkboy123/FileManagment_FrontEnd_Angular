@@ -1,16 +1,18 @@
+import { Service } from "./service.model";
+
 export interface Ticket {
     idTicket: number;
-    status: string;
+    status: String;
     numeroTicket: string;
     heurePrise: Date;
+    nom: String;
     telephonne: string;
-    utilisateur: any;  
     fileAttente: any;  
-    serviceModel: any;
+    serviceModel: Service;
   }
   
-enum StatutTicket {
-    EN_COURS='Encours',
-    TERMINE='SERVI',
-    ANNULE='ANNULER'
+export enum StatutTicket {
+  EN_COURS = 'EN_COURS',
+  TERMINE = 'TERMINE',
+  ANNULE = 'ANNULE'
 }

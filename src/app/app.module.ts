@@ -11,11 +11,13 @@ import { ServiceComponent } from './components/service/service.component'
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TicketComponent } from './components/ticket/ticket.component';
-import { TakeTicketComponent } from './components/take-ticket/take-ticket.component';
+
 import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
 import { TicketDetailsComponent } from './components/ticket-details/ticket-details.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InscriptionComponent } from './components/inscription/inscription.component';
+import { UtilisateurComponent } from './components/utilisateur/utilisateur.component';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ServiceComponent,
     NavbarComponent,
     TicketComponent,
-    TakeTicketComponent,
     TicketFormComponent,
-    TicketDetailsComponent
+    TicketDetailsComponent,
+    InscriptionComponent,
+    UtilisateurComponent,
+
    
   ],
   imports: [
