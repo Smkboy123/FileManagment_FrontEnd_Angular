@@ -24,6 +24,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-inscription',
@@ -37,9 +38,9 @@ export class InscriptionComponent {
   telephone!: string;
   email!:string;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private toastr: ToastrService,private http: HttpClient, private router: Router) { }
 
-  private apiUsersUrl = 'http://localhost:8080/users';
+  private apiUsersUrl = 'http://localhost:8080/api/v1/users';
 
 
   onSubmit() {
@@ -54,10 +55,11 @@ export class InscriptionComponent {
 
     this.http.post(`${this.apiUsersUrl}/creer`, utilisateur)
       .subscribe(response => {
-        alert('Compte créé avec succès');
+        this.toastr.success('Compte créé avec succès','Succès');
         this.router.navigate(['/login']);
       }, error => {
-        alert('Erreur lors de la création du compte');
+        this.toastr.error('Erreur lors de la création du compte','Erreur' );
+
       });
   }
 }
