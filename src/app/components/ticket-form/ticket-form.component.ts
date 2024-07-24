@@ -5,6 +5,7 @@ import { ServiceService } from '../../services/service.service';
 import { Service } from '../../models/service.model';
 import { Ticket } from '../../models/ticket.model';
 import { StatutTicket } from '../../models/ticket.model';  // Importer l'énumération
+import { TicketIdService } from 'src/app/services/ticket-data';
 
 @Component({
   selector: 'app-ticket-form',
@@ -20,7 +21,9 @@ export class TicketFormComponent implements OnInit {
   constructor(
     private ticketService: TicketService,
     private serviceService: ServiceService,
-    private router: Router
+    private router: Router,
+    public ticketDataService: TicketIdService
+
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +59,7 @@ export class TicketFormComponent implements OnInit {
       if (this.nom && this.telephone && this.selectedServiceId !== null) {
         this.ticketService.creerTicketSimple(this.nom, this.telephone, this.selectedServiceId).subscribe(
           (response: Ticket) => {
+            this.ticketDataService.setTicketId(response.idTicket); // Stocker l'identifiant du ticket
             console.log('Ticket created successfully', response);
             this.router.navigate(['/ticket', response.idTicket]);
           },

@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand " class="logo-css" href="#">Logo</a>
+    <a class="navbar-brand " class="logo-css" href="#" routerLink="/home">Logo</a>
     <!-- Bouton de menu hamburger -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,30 +9,23 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto  justify-content-center">
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLinkActive="active" routerLink="/service">Services</a>
+          <a class="nav-link" href="#"  routerLinkActive="active" routerLink="/home">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLinkActive="active" *ngIf="ticketId !== null" routerLink="/ticket/{{ticketId}}">Mon ticket</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" *ngIf="!isConnect" routerLinkActive="active" routerLink="/service">Services</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" routerLinkActive="active" routerLink="/tickets">File Attente</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLinkActive="active" routerLink="/about">À propos</a>
+          <a class="nav-link" href="#" *ngIf="!isConnect" routerLinkActive="active" routerLink="/about">À propos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" routerLinkActive="active" routerLink="/users">Users</a>
-        </li>
+       
       </ul>
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="btn btn-primary" href="#" routerLink="/login">Login
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
-              <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
         <button *ngIf="isConnect" type="button" class="btn btn-primary" routerLink="/login" >{{connect}}
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
@@ -40,7 +33,7 @@
             <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
           </svg>
         </button>
-        <button *ngIf="!isConnect" type="button" class="btn btn-danger" (onclick)="deconnexionU()">{{deconnexion}}
+        <button *ngIf="!isConnect" type="button" class="btn btn-danger" (click)="deconnexionU()">{{deconnexion}}
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
             <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
@@ -48,6 +41,8 @@
         </button>
         </li>
       </ul>
+    </div>
+    
   </nav>
 </div>
  
