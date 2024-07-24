@@ -8,10 +8,13 @@ import { TicketFormComponent } from './components/ticket-form/ticket-form.compon
 import { TicketDetailsComponent } from './components/ticket-details/ticket-details.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
 import { UtilisateurComponent } from './components/utilisateur/utilisateur.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'nav', component: NavbarComponent },
   {path : 'login', component: LoginComponent},
   {path : 'inscription', component: InscriptionComponent},
   {path : 'users', component: UtilisateurComponent},
