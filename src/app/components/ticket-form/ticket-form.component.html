@@ -17,7 +17,7 @@
             <option *ngFor="let service of services" [value]="service.idService">{{ service.nomService }}</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!ticketForm.form.valid">Prendre un Ticket</button>
+        <button type="submit" class="btn btn-danger mt-5" [disabled]="!ticketForm.form.valid">Prendre un Ticket</button>
       </form>
     </div>
   </div>

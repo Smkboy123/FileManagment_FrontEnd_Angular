@@ -1,12 +1,15 @@
 <div class="container justify-content-center align-items-center my-5 ">
   <div class="row justify-content-center ">
     <div class="col-md-6">
-      <p style="text-align: center; font-size: 3em; font-weight: bold; color: red;">Se connecter</p>
+      <p style="text-align: center; font-size: 2.5em; font-weight: bold; color: red; ">Se connecter</p>
       <div class="card mb-3">
         <div class="card-body">
+          <div class="col-12 p-0">
+            <img src="../../../assets/images/acc.png" class="img-fluid w-100 d-block" alt="Responsive image">
+        </div>
           <form class="mx-5" *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate >
             <div class="form-group mb-4">
-              <h1 style="text-align: center; margin: 10px;  "><i class="bi bi-shield-lock" style="font-size: 5rem;width: 100px;"></i></h1>
+              <!-- <h1 style="text-align: center; margin: 10px;  "><i class="bi bi-shield-lock" style="font-size: 5rem;width: 100px;"></i></h1> -->
            
               <input type="text" class="form-control" id="username" [(ngModel)]="form.username" name="username" placeholder="username ou Email" required>
             </div>
