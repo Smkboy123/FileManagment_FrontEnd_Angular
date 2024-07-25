@@ -15,9 +15,9 @@ export class NavbarComponent implements OnInit {
   connect = "connexion"
   deconnexion = "disconect"
   user: any;
-  isConnect: boolean = false;
+  isConnect: boolean = true;
   ticketId:any;
-
+  role:any
   constructor(
     private ticketDataService: TicketIdService,
     private router: Router, private tokenStorage: TokenStorageService,) {
@@ -25,6 +25,7 @@ export class NavbarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.user = this.tokenStorage.getUser();
+    this.role = this.user.authorities[0].authority
     if (this.user.token != undefined) {
       this.isConnect = false
     } else {
