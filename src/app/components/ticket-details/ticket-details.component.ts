@@ -4,6 +4,7 @@ import { TicketService } from '../../services/ticket.service';
 import { ServiceService } from '../../services/service.service';
 import { Ticket } from '../../models/ticket.model';
 import { Service } from '../../models/service.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ticket-details',
@@ -13,20 +14,26 @@ import { Service } from '../../models/service.model';
 export class TicketDetailsComponent implements OnInit {
   ticket: Ticket | undefined;
   services: Service[] = [];
+  nom: string = '';
+  telephone: string = '';
+
+  selectedService: Service | null = null;
+  selectedTicket: Ticket | null = null;
+
   position: number | undefined;
   isEditing = false;
-  ticketId:any;
+  ticketId: any;
   constructor(
     private ticketService: TicketService,
     private serviceService: ServiceService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
+
   ) { }
 
   ngOnInit(): void {
     this.ticketId = Number(this.route.snapshot.paramMap.get('id'));
-    console.log("ID ::: ",this.ticketId);
-    
     this.getTicketDetails(this.ticketId);
     this.getServices();
   }
@@ -34,8 +41,6 @@ export class TicketDetailsComponent implements OnInit {
   getTicketDetails(id: number): void {
     this.ticketService.getTicketById(id).subscribe(
       (ticket: Ticket) => {
-        console.log("TICKET ::: ",ticket);
-        
         this.ticket = ticket;
         this.getPosition(ticket.idTicket);
       },
@@ -73,11 +78,16 @@ export class TicketDetailsComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.ticket) {
-      this.ticketService.modifierTicket(this.ticket.idTicket, this.ticket.serviceModel.idService, this.ticket).subscribe(
+
+    console.log("id Tick ", this.ticket?.idTicket, "Service id ", this.ticket?.serviceModel.idService, " -");
+
+
+    if (this.selectedTicket) {
+      this.ticketService.modifierTicket(this.selectedTicket.idTicket, this.selectedTicket.serviceModel.idService, this.selectedTicket).subscribe(
         (response) => {
-          console.log('Ticket updated successfully', response);
-          this.isEditing = false;
+          this.getTicketDetails(this.ticketId);
+          this.selectedTicket = null;
+          this.toastr.success('Ticket modifié', 'Succès');
         },
         (error) => {
           console.error('Error updating ticket', error);
@@ -87,19 +97,22 @@ export class TicketDetailsComponent implements OnInit {
   }
 
   annulerTicket(): void {
-    if (this.ticket) {
-      this.ticketService.annulerTicket(this.ticket.idTicket).subscribe(
-        () => {
-          console.log('Ticket canceled successfully');
-          this.router.navigate(['/']);
-        },
-        (error) => {
-          console.error('Error canceling ticket', error);
-        }
-      );
+    if (confirm("Êtes-vous sur d'annuler le ticket ?")) {
+      if (this.ticket) {
+        this.ticketService.annulerTicket(this.ticket.idTicket).subscribe(
+          () => {
+            console.log('Ticket canceled successfully');
+            this.router.navigate(['/']);
+          },
+          (error) => {
+            console.error('Error canceling ticket', error);
+          }
+        );
+      }
     }
   }
-  modifierTicket(): void {
-    this.router.navigate(['/modifier-ticket', this.ticket?.idTicket]);
+  modifierTicket(ticket: Ticket): void {
+    this.selectedTicket = { ...ticket };
   }
+
 }

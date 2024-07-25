@@ -18,7 +18,7 @@ export class TicketService {
   }
 
   public modifierTicket(idUtilisateur: number, idService: number, ticket: Ticket): Observable<Ticket> {
-    return this.http.put<Ticket>(`${this.apiServerUrl}/ticket/modifier?idUtilisateur=${idUtilisateur}&idService=${idService}`, ticket);
+    return this.http.put<Ticket>(`${this.apiServerUrl}/ticket/modifier/${idUtilisateur}/${idService}`, ticket);
   }
 
   public annulerTicket(idTicket: number): Observable<void> {

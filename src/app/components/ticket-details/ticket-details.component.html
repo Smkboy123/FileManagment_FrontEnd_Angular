@@ -3,19 +3,53 @@
   <h2 class="text-center">Détails du Ticket</h2>
   <div class="card">
     <div class="card-body ">
-      <p><strong>Numéro du Ticket:</strong> {{ ticket?.numeroTicket }}</p>
-      <p><strong>Nom:</strong> {{ ticket?.nom }}</p>
-      <p><strong>Téléphone:</strong> {{ ticket?.telephonne }}</p>
-      <p><strong>Service:</strong> {{ ticket?.serviceModel?.nomService }}</p>
-      <p><strong>Heure de Prise:</strong> {{ ticket?.heurePrise | date: 'short' }}</p>
+      <p><strong>Numéro du Ticket:</strong> {{ ticket.numeroTicket }}</p>
+      <p><strong>Nom:</strong> {{ ticket.nom }}</p>
+      <p><strong>Téléphone:</strong> {{ ticket.telephonne }}</p>
+      <p><strong>Service:</strong> {{ ticket.serviceModel.nomService }}</p>
+      <p><strong>Heure de Prise:</strong> {{ ticket.heurePrise | date: 'dd-MM-YYYY à hh:mm:ss' }}</p>
       <p><strong>Position dans la File:</strong> {{ position }}</p>
       <button class="btn btn-danger" (click)="annulerTicket()">Annuler</button>
-      <button class="btn btn-warning" (click)="modifierTicket()">Modifier</button>
+      <button class="btn btn-warning" (click)="modifierTicket(ticket)">Modifier</button>
     </div>
   </div>
 </div>
 
-<div *ngIf="ticket == null">
-    <p>Vous n'avez pas de ticket valable !</p>
+<div class="container mt-5" *ngIf="selectedTicket">
+  <h2 class="text-center">Modifier le ticket</h2>
+  <div class="card">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #ticketForm="ngForm">
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom" required [(ngModel)]="selectedTicket.nom" name="nom">
+        </div>
+        <div class="form-group">
+          <label for="telephone">Téléphone</label>
+          <input type="tel" class="form-control" id="telephone" required [(ngModel)]="selectedTicket.telephonne" name="telephone">
+        </div>
+        <div class="form-group">
+          <label for="service">Service</label>
+          <select class="form-control" id="service" required [(ngModel)]="selectedTicket.serviceModel.idService" name="service">
+            <option *ngFor="let service of services" [value]="service.idService">{{ service.nomService }}</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-danger mt-5" [disabled]="!ticketForm.form.valid">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="ticket == null" style="text-align: center; margin-top: 50px;">
+      <h1>
+        <p>Vous n'avez pas de ticket valable !</p>
+      </h1>
+      <div class="row text-center mt-5">
+        <div class="col-12 ">
+            <a class="btn btn-primary btn-lg mb-3" href="#" routerLink="/ticket-form">Nouveau ticket</a>
+        </div>
+    </div>
 </div>
 
