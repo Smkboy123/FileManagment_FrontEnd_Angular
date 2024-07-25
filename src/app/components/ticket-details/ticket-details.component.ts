@@ -15,7 +15,7 @@ export class TicketDetailsComponent implements OnInit {
   services: Service[] = [];
   position: number | undefined;
   isEditing = false;
-
+  ticketId:any;
   constructor(
     private ticketService: TicketService,
     private serviceService: ServiceService,
@@ -24,19 +24,24 @@ export class TicketDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const ticketId = Number(this.route.snapshot.paramMap.get('id'));
-    this.getTicketDetails(ticketId);
+    this.ticketId = Number(this.route.snapshot.paramMap.get('id'));
+    console.log("ID ::: ",this.ticketId);
+    
+    this.getTicketDetails(this.ticketId);
     this.getServices();
   }
 
   getTicketDetails(id: number): void {
     this.ticketService.getTicketById(id).subscribe(
       (ticket: Ticket) => {
+        console.log("TICKET ::: ",ticket);
+        
         this.ticket = ticket;
         this.getPosition(ticket.idTicket);
       },
       (error) => {
-        console.error('Error fetching ticket details', error);
+
+        console.log('Error fetching ticket details', error);
       }
     );
   }

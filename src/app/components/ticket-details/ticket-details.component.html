@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container mt-5">
+<div  *ngIf="ticket"class="container mt-5" >
   <h2 class="text-center">Détails du Ticket</h2>
   <div class="card">
     <div class="card-body">
@@ -13,5 +13,9 @@
       <button class="btn btn-warning" (click)="modifierTicket()">Modifier</button>
     </div>
   </div>
+</div>
+
+<div *ngIf="ticket == null">
+    <p>Vous n'avez pas de ticket valable !</p>
 </div>
 
