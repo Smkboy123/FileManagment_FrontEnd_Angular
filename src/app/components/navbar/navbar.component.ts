@@ -12,15 +12,16 @@ export class NavbarComponent implements OnInit {
 
 
   logoStyle: any = "navbar-brand mx-3 font-weight-bold ";
-  connect = "connexion"
-  deconnexion = "disconect"
+  connect = "LOGIN"
+  deconnexion = "Se déconnecter"
   user: any;
   isConnect: boolean = false;
   ticketId:any;
 
   constructor(
     private ticketDataService: TicketIdService,
-    private router: Router, private tokenStorage: TokenStorageService,) {
+    private router: Router, 
+    private tokenStorage: TokenStorageService,) {
 
   }
   ngOnInit(): void {
