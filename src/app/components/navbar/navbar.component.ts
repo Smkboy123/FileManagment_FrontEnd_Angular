@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   deconnexion = "Se déconnecter"
   user: any;
   isConnect: boolean = true;
-  ticketId:any;
+  ticketId:any = null;
   role:any
   constructor(
     private ticketDataService: TicketIdService,
@@ -24,7 +24,8 @@ export class NavbarComponent implements OnInit {
     private tokenStorage: TokenStorageService,) {
 
   }
-  ngOnInit(): void {
+  ngOnInit(): void {    
+    this.ticketId = this.ticketDataService.getTicketId()
     this.user = this.tokenStorage.getUser();
     this.role = this.user.authorities[0].authority
     if (this.user.token != undefined) {
@@ -33,7 +34,6 @@ export class NavbarComponent implements OnInit {
       this.isConnect = true
     }
 
-    this.ticketId = this.ticketDataService.getTicketId()
   }
   deconnexionU() {
     this.tokenStorage.signOut();

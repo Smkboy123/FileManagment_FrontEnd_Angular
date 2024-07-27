@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'service', component: ServiceComponent },
   {path:'tickets', component : TicketComponent},
   {path:'ticket-form', component : TicketFormComponent},
-  { path: 'ticket/:id', component: TicketDetailsComponent },
+  {path: 'ticket/:id', component: TicketDetailsComponent },
   {path: '**', redirectTo: '/login', pathMatch: 'full' }
 
 ];
