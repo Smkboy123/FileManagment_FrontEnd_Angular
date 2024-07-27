@@ -15,20 +15,22 @@ export class TicketComponent implements OnInit{
   ticket!: Ticket
   user: any;
   isConnect: boolean = false
+  role: any;
 
   constructor(private ticketService: TicketService,private tokenStorage: TokenStorageService){
 
   }
 
   ngOnInit(): void {
+    this.getAllTicket();
 
-    this.user = this.tokenStorage.getUser();
+    this.user = this.tokenStorage.getUser();    
+    this.role = this.user.authorities[0].authority
     if (this.user.token != undefined) {
       this.isConnect = false
     } else {
       this.isConnect = true
     }
-    this.getAllTicket();
 
       this.ticketService.getPosition(this.ticket.idTicket).subscribe(data=>{
         this.id=data;
