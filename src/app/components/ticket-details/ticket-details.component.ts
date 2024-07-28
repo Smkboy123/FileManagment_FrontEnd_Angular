@@ -101,6 +101,7 @@ export class TicketDetailsComponent implements OnInit {
       if (this.ticket) {
         this.ticketService.annulerTicket(this.ticket.idTicket).subscribe(
           () => {
+            this.toastr.warning("Attention","Ticket annuler avec success")
             console.log('Ticket canceled successfully');
             this.router.navigate(['/']);
           },

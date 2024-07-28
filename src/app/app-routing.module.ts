@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'tickets', component : TicketComponent},
   {path:'ticket-form', component : TicketFormComponent},
   { path: 'ticket/:id', component: TicketDetailsComponent },
-  {path: '**', redirectTo: '/login', pathMatch: 'full' }
+  // {path: '**', redirectTo: '/login', pathMatch: 'full' }
 
 ];
 

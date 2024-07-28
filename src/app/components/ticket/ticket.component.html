@@ -13,7 +13,7 @@
            <th scope="col">Service</th>
            <th scope="col">Numéro de ticket</th>
            <th scope="col">heure de Prise</th> 
-           <th *ngIf="!isConnect"scope="col">Status</th>
+           <!-- <th *ngIf="!isConnect"scope="col">Status</th> -->
            <th *ngIf="!isConnect" scope="col">Actions</th>
         </tr>
       </thead>
@@ -24,10 +24,10 @@
           <td>{{ticket.serviceModel.nomService}}</td>
           <td>{{ticket.numeroTicket}}</td>
           <td>{{ ticket.heurePrise ? (ticket.heurePrise | date:'dd-MM-yyyy  \'à\' HH:mm:ss') : 'hh-MM-YYYY' }}</td>
-          <td *ngIf="!isConnect">{{ticket.status}}</td>
+          <!-- <td *ngIf="!isConnect">{{ticket.status}}</td> -->
           <td *ngIf="!isConnect">
-            <button class="btn btn-success btn-sm mx-1" (click)="deleteTicket(ticket.idTicket)">
-              <i class="bi bi-toggle-on"></i>
+            <button class="btn btn-primary btn-sm mx-1" (click)="deleteTicket(ticket.idTicket)">
+              <i class="bi bi-check-circle-fill"></i>
             </button>
           </td>
         </tr>

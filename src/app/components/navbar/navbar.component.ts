@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit {
       this.isConnect = false
     } else {
       this.isConnect = true
+      this.router.navigate(['/tickets'])
     }
 
     this.ticketId = this.ticketDataService.getTicketId()

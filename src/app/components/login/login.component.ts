@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getUser().roles;
         if (this.isLoggedIn == true) {
           this.toastr.success('Succès', 'Utilisateur connecté');
-          this.route.navigateByUrl("/service");
+          this.route.navigateByUrl("/tickets");
         }
         else {
           this.toastr.error('Hello world!', 'Toastr fun!');
