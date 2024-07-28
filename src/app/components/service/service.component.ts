@@ -31,6 +31,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/service.service';
 import { Service } from 'src/app/models/service.model';
 import { ToastrService } from 'ngx-toastr';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-service',
@@ -43,10 +44,13 @@ export class ServiceComponent implements OnInit {
   selectedService: Service | null = null;
   newService: Service = { idService: 0, nomService: '', description: '' };
   addclic : boolean=false
+  user: any;
+  role: any;
 
   constructor(
     private toastr: ToastrService,
-    private serviceService: ServiceService) { }
+    private serviceService: ServiceService,
+  private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void {
     this.getServices();
