@@ -13,3 +13,8 @@
 .b{
     margin: 20px;
 }
+.btn-primary:hover{
+background-color: rgba(255, 0, 0, 0.801);
+border-color: transparent;
+transition: ease-in-out 0.2s;
+}

@@ -13,8 +13,8 @@
            <th scope="col">Service</th>
            <th scope="col">Numéro de ticket</th>
            <th scope="col">heure de Prise</th> 
-           <th *ngIf="role==='ROLE_ADMIN'" scope="col">Status</th>
-           <th *ngIf="role==='ROLE_ADMIN'" scope="col">Actions</th>
+           <!-- <th *ngIf="!isConnect"scope="col">Status</th> -->
+           <th *ngIf="!isConnect" scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -24,17 +24,10 @@
           <td>{{ticket.serviceModel.nomService}}</td>
           <td>{{ticket.numeroTicket}}</td>
           <td>{{ ticket.heurePrise ? (ticket.heurePrise | date:'dd-MM-yyyy  \'à\' HH:mm:ss') : 'hh-MM-YYYY' }}</td>
-<<<<<<< HEAD
           <!-- <td *ngIf="!isConnect">{{ticket.status}}</td> -->
           <td *ngIf="!isConnect">
             <button class="btn btn-primary btn-sm mx-1" (click)="deleteTicket(ticket.idTicket)">
               <i class="bi bi-check-circle-fill"></i>
-=======
-          <td *ngIf="role==='ROLE_ADMIN'">{{ticket.status}}</td>
-          <td *ngIf="role==='ROLE_ADMIN'">
-            <button class="btn btn-success btn-sm mx-1" (click)="deleteTicket(ticket.idTicket)">
-              <i class="bi bi-toggle-on"></i>
->>>>>>> fb1e3b2d053dc9708b077f3629558dda1e85709d
             </button>
           </td>
         </tr>

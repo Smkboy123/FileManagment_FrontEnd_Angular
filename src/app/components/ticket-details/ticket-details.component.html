@@ -8,9 +8,10 @@
       <p><strong>Téléphone:</strong> {{ ticket.telephonne }}</p>
       <p><strong>Service:</strong> {{ ticket.serviceModel.nomService }}</p>
       <p><strong>Heure de Prise:</strong> {{ ticket.heurePrise | date: 'dd-MM-YYYY à hh:mm:ss' }}</p>
-      <p><strong>Position dans la File:</strong> {{ position }}</p>
+      <p><strong>Position dans la File:</strong>  {{ position }}</p>
       <button class="btn btn-danger" (click)="annulerTicket()">Annuler</button>
       <button class="btn btn-warning" (click)="modifierTicket(ticket)">Modifier</button>
+      <p *ngIf="tourArr"><strong>{{tour}}</strong></p>
     </div>
   </div>
 </div>

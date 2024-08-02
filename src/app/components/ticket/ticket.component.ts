@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Ticket } from 'src/app/models/ticket.model';
 import { TicketService } from 'src/app/services/ticket.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -16,7 +17,7 @@ export class TicketComponent implements OnInit{
   user: any;
   isConnect: boolean = false
 
-  constructor(private ticketService: TicketService,private tokenStorage: TokenStorageService){
+  constructor(private ticketService: TicketService,private tokenStorage: TokenStorageService, private toastr: ToastrService,){
 
   }
 
@@ -43,6 +44,7 @@ export class TicketComponent implements OnInit{
   
   deleteTicket(id:any):void{
     if(confirm("La personne à été servi ?")){
+      this.toastr.success('Ticket', 'ticket servi avec succès');
 this.ticketService.annulerTicket(id).subscribe(data =>{
   this.getAllTicket();
 })

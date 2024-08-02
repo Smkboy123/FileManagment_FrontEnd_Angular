@@ -16,10 +16,10 @@ export class TicketDetailsComponent implements OnInit {
   services: Service[] = [];
   nom: string = '';
   telephone: string = '';
-
+  tour:String=''
   selectedService: Service | null = null;
   selectedTicket: Ticket | null = null;
-
+tourArr:boolean=false
   position: number | undefined;
   isEditing = false;
   ticketId: any;
@@ -55,6 +55,15 @@ export class TicketDetailsComponent implements OnInit {
     this.ticketService.getPosition(id).subscribe(
       (position: number) => {
         this.position = position;
+        if (this.position==0) {
+          this.router.navigate(['/ticket'])
+          
+        }
+        else if(this.position==1){
+            this.tourArr=true;
+            this.tour="C'est votre tour";
+            
+        }
       },
       (error) => {
         console.error('Error fetching ticket position', error);

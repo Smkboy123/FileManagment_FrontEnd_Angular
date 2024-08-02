@@ -16,14 +16,15 @@
     border-radius: 10px;
   }
   .nav-link:hover{
-    background:  rgba(168, 11, 11, 0.514);
+    background:  rgba(168, 11, 11, 0.479);
     border-radius: 5px;
-    color: white;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 100ms;
+    /* color: white; */
+    /* transition: cubic-bezier(0.075, 0.82, 0.165, 1) 100ms; */
+
   }
   .nav-link{
     font-size: 1em;
-    font-weight: 450;
+    font-weight: 500;
   }
   .welcoUsers{
     border: solid transparent 1px;
