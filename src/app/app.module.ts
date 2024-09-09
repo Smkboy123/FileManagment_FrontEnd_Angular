@@ -18,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InscriptionComponent } from './components/inscription/inscription.component';
 import { UtilisateurComponent } from './components/utilisateur/utilisateur.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { UtilisateurComponent } from './components/utilisateur/utilisateur.compo
     TicketDetailsComponent,
     InscriptionComponent,
     UtilisateurComponent,
+    FooterComponent,
 
    
   ],
